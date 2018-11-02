@@ -1,0 +1,39 @@
+02/11/2018
+
+SQL
+
+SELECT * FROM ContactDet
+
+SELECT Name,Phone
+FROM ContactDet
+
+Select cnt.Name,rel.RelName
+FROM ContactDet as cnt
+JOIN Relation as rel on cnt.[Contacts ID]=rel.[Contacts ID]
+JOIN Retrive as ret on rel.RelID=ret.RelID
+--Many to many relationship,Retriving name and contact name 
+--from different table by using join operation.First we build relation between 
+--ContsctDet table and Relation Table so that contact id of both table match and then build relation between 
+--retrive and relation so that RelID match in both the table
+
+
+Select cnt.Name,rel.RelName
+FROM ContactDet as cnt
+JOIN Relation as rel on cnt.[Contacts ID]=rel.[Contacts ID]
+--one to many relationship--
+
+SELECT cnt.Phone,cnt.Name,rel.RelID
+FROM ContactDet as cnt
+JOIN Relation as rel on cnt.[Contacts ID]=rel.[Contacts ID]
+--One to one realtion--
+
+insert into table name (columns) (values)
+
+INSERT into ContactDet([Contacts ID],Name,Phone)values(5,'Suma',8600)
+--inserting values into ContactDet table--
+
+select * from ContactDet
+
+insert into Relation([Contacts ID],RelName,RelID)values(6,'baba',6)
+--inserting values into Relation table--
+select *FROM Relation
