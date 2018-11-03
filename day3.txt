@@ -1,0 +1,190 @@
+3/11/2018
+
+
+CREATE DATABASE sqll
+use sqll
+
+create table students(
+id int not null,
+name varchar(50),
+age int check(age>=18)
+);
+insert into students(id,name,age)
+values(1,'sam',20)
+
+insert into students(id,name,age)
+values(2,'ram',21)
+
+insert into students(id,name,age)
+values(3,'nam',null)
+
+create table states(
+sname varchar(100),
+id int not null,
+sid int 
+);
+
+insert into states(sname,id,sid)
+values('karnataka',1,1)
+
+ insert into states(sname ,id,sid)
+ values('andra',2,null)
+
+ insert into states
+ values('tamilnad',3,3)
+
+ select * from students
+
+ select * from states
+
+ select * from  students
+ inner join states as st on students.id=st.id
+--inner joi keyword provide intersection of 2 tables,as long as the column in the table matches--
+
+select * from students
+left join states as st on students.id=st.id
+--left join takes all the values of column in 1st table and match with 2nd table--
+
+select * from students
+right join states as st on students.id=st.id
+--right join return all records from right table and matched records from left table--
+
+select * from students
+full outer join states as st on students.id=st.id
+--returns the records in the table where match is found either in left or in right table--
+
+select * from students as st,states as s
+where st.id<s.id 
+--here student table  is joined with itself--
+
+CREATE DATABASE sqll
+use sqll
+
+create table students(
+id int not null,
+name varchar(50),
+age int check(age>=18)
+);
+insert into students(id,name,age)
+values(1,'sam',20)
+
+insert into students(id,name,age)
+values(2,'ram',21)
+
+insert into students(id,name,age)
+values(3,'nam',null)
+
+create table states(
+sname varchar(100),
+id int not null,
+sid int 
+);
+
+insert into states(sname,id,sid)
+values('karnataka',1,1)
+
+ insert into states(sname ,id,sid)
+ values('andra',2,null)
+
+ insert into states
+ values('tamilnad',3,3)
+
+ select * from students
+
+ select * from states
+
+ select * from  students
+ inner join states as st on students.id=st.id
+--inner joi keyword provide intersection of 2 tables,as long as the column in the table matches--
+
+select * from students
+left join states as st on students.id=st.id
+--left join takes all the values of column in 1st table and match with 2nd table--
+
+select * from students
+right join states as st on students.id=st.id
+--right join return all records from right table and matched records from left table--
+
+select * from students
+full outer join states as st on students.id=st.id
+--returns the records in the table where match is found either in left or in right table--
+
+select * from students as st,states as s
+where st.id<s.id 
+--here student table  is joined with itself--
+
+select id from students
+union
+select sid from states
+
+select lower(sname)
+from states
+
+SUBSTRING ( expression ,start , length )  --syntax--
+ 
+ select char_length('ram')
+ from students
+
+select concat(sta.sname,' ', stu.name) as concat1
+from students stu join states as sta  on sta.sid=stu.id
+
+select concat('happy','sunaday')as wish
+select ltrim( ' shivaleela  ') as trim;--remove leading spaces from string--
+SELECT LTRIM( '     test    ') AS Result;
+select reverse(name)
+from students--reverse all the strings in row and give result--
+
+select concat(sid,' ',name,' ',age)
+from students st join states as s on s.id=st.id
+
+
+--numeric functions--
+select CEILING(143.12)
+
+select ABS(-34)
+
+select log(2, 4)
+
+select log(20,10)
+
+select POWER(21,6)
+
+--time and date functions--
+select SYSDATETIME()
+
+select DATENAME(weekday, '12:10:30.123'); 
+
+ DATEDIFF ( datepart , startdate , enddate )  --syntax--
+
+ SELECT DATEDIFF(year,        '2005-12-31 23:59:59.9999999', '2006-01-01 00:00:00.0000000');
+SELECT DATEDIFF(quarter,     '2005-12-31 23:59:59.9999999', '2006-01-01 00:00:00.0000000');
+
+select abs(datediff(year,'2018/11/3','1996/06/19'))
+
+declare @i int -- variable i is declared--
+SET @i =537387-- set the value of i=537387
+SELECT 
+[YEARS]  = @i / 365,--537387/365=1472--
+[MONTHS] = (@i % 365) / 30,--mod operator will give remainder and it is divided by 30 to give month value--
+[DAYS]   = (@i % 365) % 30
+
+
+EOMONTH ( start_date [, month_to_add ] )
+
+DECLARE @cnt INT = 0; --cnt is initialized to zero--
+
+WHILE @cnt < cnt_total
+BEGIN
+   {...statements...}
+   SET @cnt = @cnt + 1;
+END;
+
+declare @a int=10 --here a is variable name initalized to zero--
+while @a<20--repeat loop until it reach 20--
+begin
+print @a--print the 1st number i.e,10
+set @a=@a+1 --it increment the a values--
+end
+
+
+
