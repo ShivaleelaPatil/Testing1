@@ -1,0 +1,110 @@
+day-4
+5/11/2018
+
+
+CREATE TABLE  Student
+
+(
+    [Studentid] [int] IDENTITY(1,1) NOT NULL,
+    [Firstname] [nvarchar](200) NOT  NULL,
+    [Lastname] [nvarchar](200)  NULL,
+    [Email] [nvarchar](100)  NULL
+)--creating table student--
+
+
+
+
+
+
+Insert into Student(Firstname, lastname, Email)
+ Values('Vivek', 'Johari', 'vivek@abc.com')
+
+Insert into Student(Firstname, lastname, Email)
+ Values('Pankaj', 'Kumar', 'pankaj@abc.com')
+
+Insert into Student(Firstname, lastname, Email)
+ Values('Amit', 'Singh', 'amit@abc.com')
+
+Insert into Student(Firstname, lastname, Email)
+ Values('Manish', 'Kumar', 'manish@abc.comm')
+
+Insert into Student(Firstname, lastname, Email)
+ Values('Abhishek', 'Singh', 'abhishek@abc.com')
+
+--inserting values into student table
+
+
+
+
+
+
+ select * from Student
+
+ 
+ 
+ 
+ --syntax to create procedures--
+ Create Procedure Procedure-name 
+(
+Input parameters ,
+Output Parameters (If required)
+)
+As
+Begin
+     Sql statement used in the stored procedure
+End
+
+
+
+
+
+
+
+--example for procedure--
+create procedure Getstudentname( --Getstudentname is the name of the procedure--
+@Studentid int --@studentid is the input parameter of table student--
+)
+AS
+Begin
+select Firstname+' '+Lastname--retriving firstname and last name from student table--
+from Student
+where Studentid=@Studentid--comparing the studentid of student table and retriving information from that table--
+end
+
+use sql4
+
+exec 
+
+
+
+
+--executing stored procedure which dont have output parameter--
+declare @studentname as nvarchar(200)
+declare @StudentEmail as nvarchar(200)
+exec Getstudentname 
+select @studentname,@StudentEmail
+
+
+
+
+create procedure Stu
+as select * from Student
+
+exec Stu
+
+use SQL3
+
+create procedure person4 @City varchar(255),@PersonID int --creating procedure for table PERSON and passing parameters to that procedure
+as select * from PERSON
+where City=@City and PersonID=@PersonID
+
+select * from PERSON
+
+EXEC person4 @City = Bijapur, @PersonID = 1;
+
+
+
+--distinct keyword--
+select count(distinct LastName) From PERSON
+
+ select name from PERSON 
