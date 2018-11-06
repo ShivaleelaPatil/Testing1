@@ -1,0 +1,242 @@
+06/11/2018
+
+
+
+
+---STIRED PROCEDURES EXAMPLES--
+
+Create procedure proc1
+AS
+BEGIN
+create table labour(ID int primary key,name varchar(20),department varchar(20))
+END
+
+exec proc1
+
+
+
+
+
+create procedure proc3
+@ID int,@name varchar(20),@department varchar(20)
+As
+BEGIN
+insert into labour values(@ID,@name,@department) 
+END
+  
+  
+  
+  
+  
+  
+create procedure proc4
+AS
+BEGIN
+select * from labour
+END
+Go
+
+
+    
+--exexuting procedure --
+exec proc3 1,shiv,cs
+exec proc3 2,leela,EC
+exec proc3 3,shivani,mech
+exec proc3 4,shivansh,cs
+
+
+--if else condition in stored procedure--
+ create procedure proc5
+ ( 
+ @maxmarks int
+ )
+ AS
+ BEGIN
+ if(@maxmarks>=60)
+   begin
+      print 'you are eligible'
+   end
+ else
+   begin
+      print 'you are Not eligible'
+   end
+ end
+ go
+
+ exec proc5 50
+ exec proc5 70
+
+
+
+
+
+--example for if else condition--
+
+ --CREATE PROCEDURE
+CREATE PROCEDURE ELIGIBILITY
+(
+  @MaxAge INT -- declaring PARAMETER
+)
+AS
+BEGIN
+      IF(@MaxAge>=18) --CONDITION
+            BEGIN
+                  PRINT 'YOU ARE ELIGIBLE FOR ADMITION'--CONDITION TRUE
+            END
+      ELSE
+            BEGIN
+                  PRINT 'SORRY, YOU ARE NOT ELIGIBLE FOR ADMITION'--CONDITION FALSE
+            END
+
+END
+
+exec ELIGIBILITY 19
+
+
+
+--declaring and setting--
+declare @i int
+set @i=20
+if @i<15
+print 'small number'
+else
+print 'large number'
+
+
+
+declare @i int =20
+if @i<56
+print 'small number'
+else
+print 'large number'
+
+
+--adding new colun to the labour table--
+alter table labour add salary bigint
+
+
+
+
+
+create procedure proc6
+AS
+BEGIN
+create table labour(ID int primary key,name varchar(20),department varchar(20))
+END
+
+exec proc1
+
+
+
+--updating the labour table with values to newly added column 'salary'--
+update labour
+set 
+salary=1000
+where ID=1 
+
+update labour
+set 
+salary=10000
+where ID=2
+
+
+update labour
+set 
+salary=12000
+where ID=3 
+
+
+update labour
+set 
+salary=15000
+where ID=4
+
+
+select * from labour
+
+
+--WHILE LOOP--
+--this query will retrive ID and name from  labour which is less
+-- then count here count means total entries in table
+
+declare @id int=1
+while @id<=(select count(ID)-1 from labour)
+begin
+  set @id=@id+1
+ select ID, name from labour where Id=@id
+ end
+ go
+
+
+ declare @labourid int
+ insert into labour(ID,name) values(5,'hello')
+ set @labourid=SCOPE_IDENTITY()
+
+
+--here we are incrementing the primary key value by 1 after every insertion--
+CREATE TABLE books1 (
+  id              INT           NOT NULL    IDENTITY(1,1)    PRIMARY KEY,
+  title           VARCHAR(100)  NOT NULL,
+  primary_author  VARCHAR(100),
+)
+
+
+
+
+
+alter procedure insbook @title nvarchar(20), @author varchar(20) as 
+begin
+insert into books1 values (@title, @author)
+select SCOPE_IDENTITY()--it returns recently added identity--
+go
+
+
+
+
+
+
+exec insbook shiva,leela
+exec insbook leela,shiva
+
+
+
+
+
+select * from books1
+
+
+
+
+--break statement in sql--
+DECLARE @stud_value INT; --variable declaration
+SET @stud_value = 0; --initialising variable to zero
+WHILE @stud_value <= 10 
+BEGIN 
+IF @stud_value = 2 
+BREAK; --come out of the loop if @stud_value=2--
+ELSE 
+PRINT 'Mark'; 
+SET @stud_value = @stud_value + 1; 
+END; --print mark 2 times because it execute this loop 2 times
+PRINT 'Andrew';
+GO
+
+
+
+use AdventureWorks2016CTP3
+GO  
+WHILE (SELECT AVG(ListPrice) FROM Production.Product) < $300  
+BEGIN  
+   UPDATE Production.Product  
+      SET ListPrice = ListPrice * 2  
+   SELECT MAX(ListPrice) FROM Production.Product  
+   IF (SELECT MAX(ListPrice) FROM Production.Product) < $500  
+      BREAK  
+   ELSE  
+      CONTINUE  
+END  
+PRINT 'Too much for the market to bear';  
+ 
+ select * from Production.Product
+
+
